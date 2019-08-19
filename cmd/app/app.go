@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"flag"
-	"github.com/timucingelici/news-gateway/internal/app/handlers"
+	"github.com/timucingelici/news-gateway/cmd/app/handlers"
 	"github.com/timucingelici/news-gateway/pkg/config"
 	"github.com/timucingelici/news-gateway/pkg/store"
 	"log"

@@ -2,7 +2,7 @@ package handlers_test
 
 import (
 	"github.com/stretchr/testify/assert"
-	"github.com/timucingelici/news-gateway/internal/app/handlers"
+	"github.com/timucingelici/news-gateway/cmd/app/handlers"
 	"github.com/timucingelici/news-gateway/pkg/store/mocks"
 	"io/ioutil"
 	"net/http"
