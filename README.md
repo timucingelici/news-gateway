@@ -1,4 +1,4 @@
-# # News Gateway API
+# News Gateway API
 This service (or the collection of services) will fetch, parse, and store news from different RSS feeds and then expose the collected data to its consumers over a RESTful API
 
 ## Data Sources
@@ -18,7 +18,7 @@ The following infrastructure diagram is to show how I would design this if I had
 
 Still, I was able to up come up with a working `fetcher` service and a working `api` solution.
 
-![](https:i.imgur.com/DZENGr7.png)
+![Infra](infra.png)
 
 
 ## Running the project
