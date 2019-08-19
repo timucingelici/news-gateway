@@ -1,0 +1,41 @@
+version: '3.5'
+services:
+  redis:
+    container_name: news_redis
+    image: redis:latest
+    expose:
+      - 6379
+    networks:
+      - news_gateway
+  fetcher:
+    build:
+      context: .
+      dockerfile: dockerfiles/fetcher/Dockerfile
+    image: fetcher:latest
+    links:
+      - redis
+    environment:
+      - FETCHER_INTERVAL=60   # Seconds
+      - REDIS_ADDR=news_redis:6379
+      - REDIS_READ_TIMEOUT=1  # Seconds
+      - REDIS_WRITE_TIMEOUT=1 # Seconds
+    networks:
+      - news_gateway
+  app:
+    build:
+      context: .
+      dockerfile: dockerfiles/app/Dockerfile
+    image: app:latest
+    ports:
+      - 8090:8090
+    links:
+      - redis
+    environment:
+      - FETCHER_INTERVAL=60   # Seconds
+      - REDIS_ADDR=news_redis:6379
+      - REDIS_READ_TIMEOUT=1  # Seconds
+      - REDIS_WRITE_TIMEOUT=1 # Seconds
+    networks:
+      - news_gateway
+networks:
+  news_gateway:
